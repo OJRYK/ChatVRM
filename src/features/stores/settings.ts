@@ -122,6 +122,7 @@ interface Integrations {
 }
 
 interface Character {
+  userName: string
   characterName: string
   showAssistantText: boolean
   showCharacterName: boolean
@@ -268,6 +269,7 @@ const settingsStore = create<SettingsState>()(
       conversationContinuityMode: false,
 
       // Character
+      userName: 'たけちゃん',
       characterName: process.env.NEXT_PUBLIC_CHARACTER_NAME || 'ひかり',
       showAssistantText:
         process.env.NEXT_PUBLIC_SHOW_ASSISTANT_TEXT === 'true' ? true : false,
@@ -324,9 +326,9 @@ const settingsStore = create<SettingsState>()(
       temperature:
         parseFloat(process.env.NEXT_PUBLIC_TEMPERATURE || '1.0') || 1.0,
       noSpeechTimeout:
-        parseFloat(process.env.NEXT_PUBLIC_NO_SPEECH_TIMEOUT || '5.0') || 5.0,
+        parseFloat(process.env.NEXT_PUBLIC_NO_SPEECH_TIMEOUT || '1.5') || 1.5,
       voiceOnlyMode:
-        process.env.NEXT_PUBLIC_VOICE_ONLY_MODE === 'true' ? true : false,
+        process.env.NEXT_PUBLIC_VOICE_ONLY_MODE === 'true' ? true : true,
       vadSensitivity:
         parseFloat(process.env.NEXT_PUBLIC_VAD_SENSITIVITY || '0.5') || 0.5,
       useVad: false,
@@ -336,7 +338,7 @@ const settingsStore = create<SettingsState>()(
       voiceSilenceMinDuration: 1000,
       alwaysListening: true,
       audioBufferEnabled: true,
-      audioBufferDuration: 1000,
+      audioBufferDuration: 3000,
       interruptOnSpeechDetected: true,
 
       // NijiVoice settings
