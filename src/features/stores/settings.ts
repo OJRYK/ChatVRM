@@ -421,6 +421,7 @@ const settingsStore = create<SettingsState>()(
         difyUrl: state.difyUrl,
         difyConversationId: state.difyConversationId,
         youtubeLiveId: state.youtubeLiveId,
+        userName: state.userName,
         characterName: state.characterName,
         showAssistantText: state.showAssistantText,
         showCharacterName: state.showCharacterName,
