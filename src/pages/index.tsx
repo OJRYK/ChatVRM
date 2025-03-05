@@ -27,6 +27,7 @@ const Home = () => {
       : `url(${buildUrl(backgroundImageUrl)})`
   const messageReceiverEnabled = settingsStore((s) => s.messageReceiverEnabled)
   const modelType = settingsStore((s) => s.modelType)
+  const showAudioDebug = settingsStore((s) => s.showAudioDebug)
 
   return (
     <div className="h-[100svh] bg-cover" style={{ backgroundImage: bgUrl }}>
@@ -39,7 +40,7 @@ const Home = () => {
       {messageReceiverEnabled && <MessageReceiver />}
       <Toasts />
       <WebSocketManager />
-      {settingsStore((s) => s.showAudioDebug) && <AudioLevelDisplay />}
+      {showAudioDebug && <AudioLevelDisplay />}
     </div>
   )
 }
