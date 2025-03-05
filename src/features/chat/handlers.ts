@@ -405,7 +405,20 @@ export const handleSendChatFn = () => async (text: string) => {
       })
     }
   } else {
+    // ユーザー名の処理
     let systemPrompt = ss.systemPrompt
+    const userName = ss.userName && ss.userName.trim() !== '' ? ss.userName : 'たけちゃん'
+    
+    // システムプロンプト内の[user]をユーザー名に置き換える
+    systemPrompt = systemPrompt.replace(/\[user\]/g, userName)
+    
+    // ユーザー名情報をプロンプトの先頭に追加
+    if (ss.userName && ss.userName.trim() !== '') {
+      systemPrompt = `userの名前は${ss.userName}です。\n\n${systemPrompt}`
+    } else {
+      // ユーザー名が設定されていない場合
+      systemPrompt = `userの名前はたけちゃんです。\n\n${systemPrompt}`
+    }
     if (ss.slideMode) {
       if (sls.isPlaying) {
         return
