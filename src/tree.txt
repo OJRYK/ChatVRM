@@ -1,0 +1,185 @@
+フォルダー パスの一覧
+ボリューム シリアル番号は 44C1-76DC です
+C:.
+│  tree.txt
+│  
+├─components
+│  │  assistantText.tsx
+│  │  capture.tsx
+│  │  chatLog.tsx
+│  │  form.tsx
+│  │  githubLink.tsx
+│  │  iconButton.tsx
+│  │  introduction.tsx
+│  │  link.tsx
+│  │  Live2DComponent.tsx
+│  │  live2DViewer.tsx
+│  │  menu.tsx
+│  │  messageInput.tsx
+│  │  messageInputContainer.tsx
+│  │  messageInputContainer_old.tsx
+│  │  messageReceiver.tsx
+│  │  meta.tsx
+│  │  modalImage.tsx
+│  │  realtimeAPITools.json
+│  │  realtimeAPITools.tsx
+│  │  realtimeAPIUtils.tsx
+│  │  slideContent.tsx
+│  │  slideControls.tsx
+│  │  slides.tsx
+│  │  slideText.tsx
+│  │  speakers.json
+│  │  speakers_aivis.json
+│  │  textButton.tsx
+│  │  toast.tsx
+│  │  toasts.tsx
+│  │  useExternalLinkage.tsx
+│  │  useRealtimeAPI.tsx
+│  │  useYoutube.tsx
+│  │  vrmViewer.tsx
+│  │  webcam.tsx
+│  │  websocketManager.tsx
+│  │  youtubeManager.tsx
+│  │  
+│  └─settings
+│          advancedSettings.tsx
+│          ai.tsx
+│          based.tsx
+│          character.tsx
+│          description.tsx
+│          externalLinkage.tsx
+│          index.tsx
+│          log.tsx
+│          messageReceiver.tsx
+│          modelProvider.tsx
+│          other.tsx
+│          slide.tsx
+│          slideConvert.tsx
+│          voice.tsx
+│          voice_old.tsx
+│          youtube.tsx
+│          
+├─features
+│  ├─chat
+│  │      aiChatFactory.ts
+│  │      difyChat.ts
+│  │      handlers.ts
+│  │      localLLMChat.ts
+│  │      openAIAudioChat.ts
+│  │      vercelAIChat.ts
+│  │      
+│  ├─constants
+│  │      koeiroParam.ts
+│  │      settings.ts
+│  │      systemPromptConstants.ts
+│  │      
+│  ├─emoteController
+│  │      autoBlink.ts
+│  │      autoLookAt.ts
+│  │      emoteConstants.ts
+│  │      emoteController.ts
+│  │      expressionController.ts
+│  │      
+│  ├─lipSync
+│  │      lipSync.ts
+│  │      lipSyncAnalyzeResult.ts
+│  │      
+│  ├─messages
+│  │      live2dHandler.ts
+│  │      messages.ts
+│  │      messageSelectors.ts
+│  │      speakCharacter.ts
+│  │      speakQueue.ts
+│  │      synthesizeStyleBertVITS2.ts
+│  │      synthesizeVoiceAivisSpeech.ts
+│  │      synthesizeVoiceAzureOpenAI.ts
+│  │      synthesizeVoiceElevenlabs.ts
+│  │      synthesizeVoiceGoogle.ts
+│  │      synthesizeVoiceGSVI.ts
+│  │      synthesizeVoiceKoeiromap.ts
+│  │      synthesizeVoiceNijivoice.ts
+│  │      synthesizeVoiceOpenAI.ts
+│  │      synthesizeVoiceVoicevox.ts
+│  │      
+│  ├─slide
+│  │      slideAIHelpers.ts
+│  │      
+│  ├─stores
+│  │      home.ts
+│  │      menu.ts
+│  │      settings.ts
+│  │      settings_old.ts
+│  │      slide.ts
+│  │      toast.ts
+│  │      websocketStore.ts
+│  │      
+│  ├─vrmViewer
+│  │      model.ts
+│  │      viewer.ts
+│  │      
+│  └─youtube
+│          conversationContinuityFunctions.ts
+│          youtubeComments.ts
+│          
+├─lib
+│  │  i18n.js
+│  │  
+│  ├─VRMAnimation
+│  │  │  loadVRMAnimation.ts
+│  │  │  VRMAnimation.ts
+│  │  │  VRMAnimationLoaderPlugin.ts
+│  │  │  VRMAnimationLoaderPluginOptions.ts
+│  │  │  VRMCVRMAnimation.ts
+│  │  │  
+│  │  └─utils
+│  │          arrayChunk.ts
+│  │          linearstep.ts
+│  │          saturate.ts
+│  │          
+│  └─VRMLookAtSmootherLoaderPlugin
+│          VRMLookAtSmoother.ts
+│          VRMLookAtSmootherLoaderPlugin.ts
+│          
+├─pages
+│  │  index.tsx
+│  │  send-message.tsx
+│  │  _app.tsx
+│  │  _document.tsx
+│  │  
+│  └─api
+│          aiChat.ts
+│          azureOpenAITTS.ts
+│          convertMarkdown.ts
+│          convertSlide.ts
+│          difyChat.ts
+│          elevenLabs.ts
+│          get-live2d-list.ts
+│          get-nijivoice-actors.ts
+│          get-vrm-list.ts
+│          getSlideFolders.ts
+│          getSupplement.ts
+│          local-llm.ts
+│          messages.ts
+│          openAITTS.ts
+│          save-chat-log.ts
+│          stylebertvits2.ts
+│          tts-aivisspeech.ts
+│          tts-google.ts
+│          tts-koeiromap.ts
+│          tts-nijivoice.ts
+│          tts-voicevox.ts
+│          update-aivis-speakers.ts
+│          upload-vrm-list.ts
+│          
+├─styles
+│      globals.css
+│      
+└─utils
+        audioBufferManager.ts
+        buildUrl.ts
+        englishToJapanese.json
+        migrateStore.ts
+        reduceTalkStyle.ts
+        wait.ts
+        WebSocketManager.ts
+        
