@@ -109,25 +109,21 @@ const AudioLevelDisplay = () => {
   if (!showAudioDebug) return null;
   
   return (
-    <div className="fixed bottom-4 left-4 bg-gray-800 bg-opacity-70 text-white p-3 rounded z-50 shadow-lg">
-      {/* モード切替スイッチ */}
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-bold">音声検出モード:</span>
+    <div className="fixed bottom-4 left-4 bg-gray-800 bg-opacity-50 text-white p-2 rounded z-50 shadow-lg text-xs" style={{maxWidth: "180px"}}>
+      {/* 1行目: モード表示 */}
+      <div className="flex justify-between items-center">
+        <span className="text-xs">音声:</span>
         <button 
           onClick={toggleVad} 
-          className={`px-2 py-1 rounded text-xs text-black ${useVad ? 'bg-green-600' : 'bg-blue-600'}`}
+          className={`px-1 py-0.5 rounded text-[10px] text-black ${useVad ? 'bg-green-600' : 'bg-blue-600'}`}
         >
-          {useVad ? 'Silero VAD' : '単純閾値'}
+          {useVad ? 'VAD' : '閾値'}
         </button>
       </div>
       
-      {/* 音声レベル表示 */}
-      <div className="flex justify-between text-xs mb-1">
-        <div>音声レベル: {(audioLevel * 100).toFixed(0)}</div>
-        <div>検出閾値: {(vadSensitivity * 100).toFixed(0)}</div>
-      </div>
+      {/* 2行目: 音声レベルバー */}
       <div 
-        className="w-full h-5 bg-gray-600 rounded relative cursor-pointer mb-3"
+        className="w-full h-3 bg-gray-600 rounded relative cursor-pointer my-1"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
       >
@@ -139,52 +135,44 @@ const AudioLevelDisplay = () => {
         
         {/* 音声レベルバー */}
         <div
-          className={`h-5 rounded transition-all duration-75 ${isAboveThreshold ? 'bg-green-500' : 'bg-blue-500'}`}
+          className={`h-3 rounded transition-all duration-75 ${isAboveThreshold ? 'bg-green-500' : 'bg-blue-500'}`}
           style={{ width: `${audioLevel * 100}%` }}
         ></div>
+        
+        {/* インジケーター数値 */}
+        <div className="absolute top-0 right-1 text-[10px] text-white">
+          {(audioLevel * 100).toFixed(0)}
+        </div>
       </div>
       
-      {/* VAD情報表示 */}
+      {/* 3行目: VAD情報 (使用時のみ) */}
       {useVad && (
-        <>
-          <div className="flex justify-between text-xs mb-1">
-            <div>発話確率: {(speechProb * 100).toFixed(0)}</div>
-            <div>VAD閾値: {(vadSpeechThreshold * 100).toFixed(0)}</div>
-          </div>
+        <div 
+          className="w-full h-3 bg-gray-600 rounded relative cursor-pointer"
+          onMouseDown={handleVadMouseDown}
+          onMouseMove={handleVadMouseMove}
+        >
+          {/* VAD閾値ライン */}
           <div 
-            className="w-full h-5 bg-gray-600 rounded relative cursor-pointer"
-            onMouseDown={handleVadMouseDown}
-            onMouseMove={handleVadMouseMove}
-          >
-            {/* VAD閾値ライン */}
-            <div 
-              className="absolute top-0 bottom-0 w-0.5 bg-yellow-500 z-10"
-              style={{ left: `${vadSpeechThreshold * 100}%` }}
-            ></div>
-            
-            {/* 無音閾値ライン */}
-            <div 
-              className="absolute top-0 bottom-0 w-0.5 bg-orange-300 z-10"
-              style={{ left: `${vadSilenceThreshold * 100}%` }}
-            ></div>
-            
-            {/* 発話確率バー */}
-            <div
-              className="h-5 rounded transition-all duration-75"
-              style={{ 
-                width: `${speechProb * 100}%`,
-                backgroundColor: getVadBarColor()
-              }}
-            ></div>
-          </div>
+            className="absolute top-0 bottom-0 w-0.5 bg-yellow-500 z-10"
+            style={{ left: `${vadSpeechThreshold * 100}%` }}
+          ></div>
           
-          <div className="text-xs mt-1 text-white">
-            安定性: {(speechStability * 100).toFixed(0)}%
+          {/* 発話確率バー */}
+          <div
+            className="h-3 rounded transition-all duration-75"
+            style={{ 
+              width: `${speechProb * 100}%`,
+              backgroundColor: getVadBarColor()
+            }}
+          ></div>
+          
+          {/* 確率値 */}
+          <div className="absolute top-0 right-1 text-[10px] text-white">
+            {(speechProb * 100).toFixed(0)}
           </div>
-        </>
+        </div>
       )}
-      
-      {/* 閾値調整は直感的に行えるためテキスト不要 */}
     </div>
   )
 }

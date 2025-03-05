@@ -334,7 +334,7 @@ const settingsStore = create<SettingsState>()(
       useVad: false,
       vadSpeechThreshold: 0.5,
       vadSilenceThreshold: 0.3,
-      showAudioDebug: false,
+      showAudioDebug: true,
       voiceSilenceMinDuration: 1000,
       alwaysListening: true,
       audioBufferEnabled: true,
@@ -483,5 +483,4 @@ const settingsStore = create<SettingsState>()(
     }
   )
 )
-
 export default settingsStore
