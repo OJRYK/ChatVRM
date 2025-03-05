@@ -334,7 +334,7 @@ const settingsStore = create<SettingsState>()(
       useVad: false,
       vadSpeechThreshold: 0.5,
       vadSilenceThreshold: 0.3,
-      showAudioDebug: true,
+      showAudioDebug: false,
       voiceSilenceMinDuration: 1000,
       alwaysListening: true,
       audioBufferEnabled: true,
