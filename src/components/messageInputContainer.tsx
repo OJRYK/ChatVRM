@@ -809,6 +809,50 @@ export const MessageInputContainer = ({ onChatProcessStart }: Props) => {
       }, 1000);
     }
   }, [audioContext, alwaysListening, startListening]);
+  
+  // バッファリング設定の変更を監視する状態
+  const [prevBufferSettings, setPrevBufferSettings] = useState({
+    enabled: audioBufferEnabled,
+    duration: audioBufferDuration
+  });
+  
+  // 音声バッファリング設定が変更されたことを検出するだけのuseEffect
+  useEffect(() => {
+    // 設定が前回と異なる場合のみ処理
+    if (prevBufferSettings.enabled !== audioBufferEnabled || 
+        prevBufferSettings.duration !== audioBufferDuration) {
+      
+      console.log('🔄 音声バッファリング設定が変更されました:', { 
+        audioBufferEnabled, 
+        audioBufferDuration 
+      });
+      
+      // バッファをクリア
+      audioBufferRef.current = null;
+      
+      // 現在の設定を保存
+      setPrevBufferSettings({
+        enabled: audioBufferEnabled,
+        duration: audioBufferDuration
+      });
+      
+      // 音声認識のリセットが必要なフラグを立てる
+      if (isListeningRef.current) {
+        // 安全な方法で音声認識をリセット
+        console.log('音声認識のリセットが必要です');
+        
+        // 既存の停止処理を利用
+        stopListening();
+        
+        // 少し遅延して再開
+        setTimeout(() => {
+          if (!isListeningRef.current) {
+            startListening();
+          }
+        }, 1000);
+      }
+    }
+  }, [audioBufferEnabled, audioBufferDuration, prevBufferSettings, stopListening, startListening]);
 
   // ここからUIレンダリング部分
   return (

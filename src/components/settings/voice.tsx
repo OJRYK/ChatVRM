@@ -76,6 +76,12 @@ const Voice = () => {
   const noSpeechTimeout = settingsStore((s) => s.noSpeechTimeout)
   const showAudioDebug = settingsStore((s) => s.showAudioDebug)
   const voiceSilenceMinDuration = settingsStore((s) => s.voiceSilenceMinDuration)
+  
+  // 追加で必要な設定を最初から読み込む
+  const alwaysListening = settingsStore((s) => s.alwaysListening)
+  const audioBufferEnabled = settingsStore((s) => s.audioBufferEnabled)
+  const audioBufferDuration = settingsStore((s) => s.audioBufferDuration)
+  const interruptOnSpeechDetected = settingsStore((s) => s.interruptOnSpeechDetected)
 
   const { t } = useTranslation()
   const [nijivoiceSpeakers, setNijivoiceSpeakers] = useState<Array<any>>([])
@@ -164,13 +170,13 @@ const Voice = () => {
         <div className="flex items-center">
           <input
             type="checkbox"
-            checked={settingsStore((s) => s.alwaysListening)}
+            checked={alwaysListening}
             onChange={(e) =>
               settingsStore.setState({ alwaysListening: e.target.checked })
             }
             className="mr-8"
           />
-          <span className="text-black">{settingsStore((s) => s.alwaysListening) ? '有効' : '無効'}</span>
+          <span className="text-black">{alwaysListening ? '有効' : '無効'}</span>
         </div>
       </div>
 
@@ -181,16 +187,16 @@ const Voice = () => {
         <div className="flex items-center">
           <input
             type="checkbox"
-            checked={settingsStore((s) => s.audioBufferEnabled)}
+            checked={audioBufferEnabled}
             onChange={(e) =>
               settingsStore.setState({ audioBufferEnabled: e.target.checked })
             }
             className="mr-8"
           />
-          <span className="text-black">{settingsStore((s) => s.audioBufferEnabled) ? '有効' : '無効'}</span>
+          <span className="text-black">{audioBufferEnabled ? '有効' : '無効'}</span>
         </div>
         
-        {settingsStore((s) => s.audioBufferEnabled) && (
+        {audioBufferEnabled && (
           <div className="mt-8">
             <div className="mb-4">バッファ時間 (ミリ秒)</div>
             <div className="flex items-center space-x-4">
@@ -199,7 +205,7 @@ const Voice = () => {
                 min={100}
                 max={3000}
                 step={100}
-                value={settingsStore((s) => s.audioBufferDuration)}
+                value={audioBufferDuration}
                 className="px-16 py-8 bg-surface1 hover:bg-surface1-hover rounded-8 w-32"
                 onChange={(e) => {
                   const value = Math.max(100, Math.min(3000, Number(e.target.value)))
@@ -219,13 +225,13 @@ const Voice = () => {
         <div className="flex items-center">
           <input
             type="checkbox"
-            checked={settingsStore((s) => s.interruptOnSpeechDetected)}
+            checked={interruptOnSpeechDetected}
             onChange={(e) =>
               settingsStore.setState({ interruptOnSpeechDetected: e.target.checked })
             }
             className="mr-8"
           />
-          <span className="text-black">{settingsStore((s) => s.interruptOnSpeechDetected) ? '有効' : '無効'}</span>
+          <span className="text-black">{interruptOnSpeechDetected ? '有効' : '無効'}</span>
         </div>
       </div>
 
