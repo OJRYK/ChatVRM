@@ -97,7 +97,7 @@ export const MessageInput = ({
 
   return (
     <div className="absolute bottom-0 z-20 w-screen">
-      {isMicRecording && (
+      {isMicRecording && settingsStore((s) => s.showAudioDebug) && (
         <div className="bg-surface1 text-text-primary text-center py-8">
           {userMessage ? t('Recognizing') : t('VoiceDetected')}
         </div>
