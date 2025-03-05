@@ -34,6 +34,7 @@ export const MessageInput = ({
   const [showPermissionModal, setShowPermissionModal] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const realtimeAPIMode = settingsStore((s) => s.realtimeAPIMode)
+  const showAudioDebug = settingsStore((s) => s.showAudioDebug)
 
   const { t } = useTranslation()
 
@@ -97,7 +98,7 @@ export const MessageInput = ({
 
   return (
     <div className="absolute bottom-0 z-20 w-screen">
-      {isMicRecording && settingsStore((s) => s.showAudioDebug) && (
+      {isMicRecording && showAudioDebug && (
         <div className="bg-surface1 text-text-primary text-center py-8">
           {userMessage ? t('Recognizing') : t('VoiceDetected')}
         </div>
