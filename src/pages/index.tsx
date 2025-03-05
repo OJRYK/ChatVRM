@@ -39,7 +39,7 @@ const Home = () => {
       {messageReceiverEnabled && <MessageReceiver />}
       <Toasts />
       <WebSocketManager />
-      <AudioLevelDisplay />
+      {settingsStore((s) => s.showAudioDebug) && <AudioLevelDisplay />}
     </div>
   )
 }
